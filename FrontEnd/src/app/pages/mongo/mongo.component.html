@@ -1,0 +1,27 @@
+<div class="text">
+    <h1> MONGODB FILES</h1>
+</div>
+
+
+<!-- CHECK THE AMOUNT OF FILES SELECTED-->
+<ng-container *ngIf="selectedCheckboxes.length > 0">
+    {{selectedCheckboxes.length}} files are selected
+</ng-container><br>
+
+<!-- SELECT ALL THE FILES -->
+<input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()" />
+    Select All
+
+<!-- DISPLAY THE CHECKBOX -->
+<div *ngFor="let file of files">
+    <input type="checkbox" [(ngModel)]="file.selected" (change)="checkboxChanged()"/>
+    {{file.title}}
+</div>
+
+<!-- SEND THE SELECTED CHECKBOXES -->
+<button (click)="submit()"> SUBMIT </button>
+
+<div class="button-container">
+    <button class="button" routerLink="/hdfs" (click)="submit()"> Upload your files</button>
+    <button class="button" routerLink="/"> Go back to main page</button>
+</div>

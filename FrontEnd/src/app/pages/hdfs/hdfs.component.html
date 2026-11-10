@@ -1,0 +1,31 @@
+<div class="text">
+    <h1> Upload your own files to be analyzed. </h1>
+</div>
+
+<ng-container *ngIf="selectedCheckboxes && selectedCheckboxes.length > 0">
+  <p>{{selectedCheckboxes.length}} files are selected:</p>
+  <ul>
+      <li *ngFor="let checkbox of selectedCheckboxes">
+          {{checkbox.title}}
+      </li>
+  </ul>
+</ng-container>
+
+<ng-container *ngIf="!selectedCheckboxes || selectedCheckboxes.length === 0">
+  <p>No files selected.</p>
+</ng-container>
+
+<div class="button-container">
+    <div class="container">
+        <div class="row mt-5">
+          <div class="col-md-4">
+            <div class="mb-3">
+              <input #fileInput type="file" id="fileInput" (change)="onFileChange($event)">
+              <button (click)="uploadFile()" type="button" class="button btn-primary mt-3">Upload</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <button class="button2" routerLink="/mongofiles"> Select more files</button>
+    <button class="button" routerLink="/analysis"> Analyze Files</button>
+</div>
